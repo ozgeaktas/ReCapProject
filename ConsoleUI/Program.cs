@@ -4,6 +4,7 @@ using DataAccess.Concreate.EntityFramework;
 using DataAccess.Concreate.InMemory;
 using Entities.Concreate;
 using System;
+using DataAccess.Concrete.EntityFramework;
 
 namespace ConsoleUI
 {
@@ -11,19 +12,26 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            
-            CarManager carManager = new CarManager(new EfCarDal());
-           
+            //CarTest();
 
-
-            foreach (var c in carManager.GetAll())
+            ColorManager colorManager = new ColorManager(new EfColorDal());
+            foreach(var color in colorManager.GetAll())
             {
-                Console.WriteLine(c);
+                Console.WriteLine(color.ColorName);
             }
-            
-            
+
+
         }
 
-        
+        private static void CarTest()
+        {
+            CarManager carManager = new CarManager(new EfCarDal());
+
+            foreach (var car in carManager.GetAll())
+            {
+                Console.WriteLine(car.Description);
+            }
+        }
+
     }
 }

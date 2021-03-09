@@ -3,6 +3,7 @@ using DataAccess.Abstract;
 using Entities.Concreate;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Business.Concreate
@@ -29,7 +30,7 @@ namespace Business.Concreate
 
         public List<Car> GetAll()
         {
-            return _carDal.GetAll();
+            return _carDal.GetAll().ToList();
         }
 
         public List<Car> GetCarsByBrandId(int brandId)
