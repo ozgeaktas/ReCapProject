@@ -1,15 +1,14 @@
-﻿using Core.Entities;
-using Entities.Abstract;
+﻿
+using Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
-
 
 namespace Entities.Concreate
 {
     public class Color:IEntities
     {
-        public int Id { get; set; }
+        public int ColorId { get; set; }
         public string ColorName { get; set; }
         
     }
