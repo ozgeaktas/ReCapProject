@@ -12,7 +12,9 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-              CarTest();
+             // CarTest();
+          //  CarRental();
+            RentalList();
 
             // ColorTest();
             // BrandTest();
@@ -69,6 +71,42 @@ namespace ConsoleUI
                 Console.WriteLine(result.Message);
             }
            
+        }
+
+        private static void CustomerTest()
+        {
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            Customer customer = new Customer();
+            customer.CompanyName = "Mercedes";
+            customer.UserId = 2;
+            var result = customerManager.Add(customer);
+           
+        }
+
+        private static void CarRental()
+        {
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            Rental rental = new Rental();
+            rental.CarId = 1;
+            rental.CustomerId = 2;
+            rental.Id = 1;
+            rental.RentDate = DateTime.Now;
+            rental.ReturnDate = DateTime.Now;
+            var result = rentalManager.Add(rental);
+           
+
+
+        }
+        private static void RentalList()
+        {
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+
+            var result = rentalManager.GetCarRentalDetails();
+
+            foreach (var item in result.Data)
+            {
+                Console.WriteLine(item.RentalId + " / " + item.CarId + " / " +  " / " + item.RentDate + " / " + item.ReturnDate + " / " + item.BrandName + " / " + item.ColorName);
+            }
         }
 
     }
