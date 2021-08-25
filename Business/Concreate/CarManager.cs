@@ -21,10 +21,10 @@ namespace Business.Concreate
 
         public IResult Add(Car car)
         {
-            if (car.Description.Length < 2)
+           /* if (car.Description.Length < 2)
             {
                 return new ErrorResult(Messages.CarNameInvalid);
-            }
+            }*/
             _carDal.Add(car);
             return new SuccessResult(Messages.CarAdded);//bunu yapabilmenin yolu constructor eklemek.
         }
