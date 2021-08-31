@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -22,16 +23,18 @@ namespace Business.Concreate
             _colorDal = colorDal;
         }
 
+        [ValidationAspect(typeof(ColorValidator))]
         public IResult Add(Color color)
         {
-            ValidationTool.Validate(new ColorValidator(), color);
+            //ValidationTool.Validate(new ColorValidator(), color);
             _colorDal.Add(color);
             return new SuccessResult(Messages.ColorAdded);
         }
 
+        [ValidationAspect(typeof(ColorValidator))]
         public IResult Delete(Color color)
         {
-            ValidationTool.Validate(new ColorValidator(), color);
+           // ValidationTool.Validate(new ColorValidator(), color);
             _colorDal.Delete(color);
             return new SuccessResult(Messages.ColorDeleted);
         }
@@ -50,9 +53,10 @@ namespace Business.Concreate
             return new SuccessDataResult<Color>(_colorDal.Get(p=>p.ColorId==colorId));
         }
 
+        [ValidationAspect(typeof(ColorValidator))]
         public IResult Update(Color color)
         {
-            ValidationTool.Validate(new ColorValidator(), color);
+           // ValidationTool.Validate(new ColorValidator(), color);
             _colorDal.Update(color);
             return new SuccessResult(Messages.CarUpdated);
         }
