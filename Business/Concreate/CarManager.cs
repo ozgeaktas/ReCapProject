@@ -54,6 +54,7 @@ namespace Business.Concreate
 
         public IDataResult<List<Car>> GetCarsByColorId(int colorId)
         {
+
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.ColorId == colorId));
         }
 
